@@ -1,0 +1,20 @@
+﻿@*@model BookStore.ViewModels.BookListVM*@
+@model BookListVM
+
+<h1>@Model.SelectedCategory</h1>
+<hr />
+@foreach (var book in Model.Books)
+{ 
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@book.ImageUrl" alt="@book.Title">
+        <div class="card-body">
+            <h5 class="card-title">@book.Title</h5>
+            <h6 class="card-subtitle">@book.Category.Name</h6>
+            <p class="card-text">@book.Description</p>
+            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="btn btn-primary">Book Details</a>
+            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+                       asp-route-bookId =@book.BookId class="btn btn-primary">Add to Cart</a>
+        </div>
+    </div>
+}
+
